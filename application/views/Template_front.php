@@ -114,6 +114,10 @@
               <ul class="uk-slideshow-items">
                   <li>
                       <img src="<?php echo base_url();?>assets/image/dark.jpg" alt="" uk-cover>
+                      <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
+                <h3 class="uk-margin-remove">Bottom</h3>
+                <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
                   </li>
                   <li>
                       <img src="<?php echo base_url();?>assets/image/photo.jpg" alt="" uk-cover>
