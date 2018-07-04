@@ -122,7 +122,7 @@
                       <img src="<?php echo base_url();?>assets/image/photo2.jpg" alt="" uk-cover>
                   </li>
                   <li>
-                      <img src="<?php echo base_url();?>assets/image/photo2.jpg" alt="" uk-cover>
+                      <img src="<?php echo base_url();?>assets/image/photo3.jpg" alt="" uk-cover>
                   </li>
               </ul>
 
