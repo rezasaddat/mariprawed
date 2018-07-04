@@ -26,7 +26,7 @@
             <!-- kolom 1 -->
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                   <li class="uk-active">
-                    <h2>MARIPRAWED</h2>
+                    <img src="<?php echo base_url();?>assets/gambar/logo-mariprawed.png" alt="" style="width:100%;margin-left:-15px;margin-top:-25px;">
                   </li>
                   <li>
                     <div class="uk-margin">
@@ -98,6 +98,7 @@
                 <li>
                   <div class="uk-text-center" style="font-size:8px;">
                     <p>
+                      <br><br><br>
                       Indonesia <br>
                       2018 Mariprawed, Inc. All Rights Reserved
                     </p>
@@ -107,7 +108,28 @@
             </div>
       </div>
       <div class="uk-container uk-position-relative" style="padding-right: 0px;margin-left: 280px;">
-          <div class="uk-background-primary" style="height:2000px">Expand</div>
+          <!-- <div class="uk-background-primary" style="bottom: 0;height: 703px;">Expand</div> -->
+          <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 900; max-height: 703; animation: push; autoplay: true">
+
+              <ul class="uk-slideshow-items">
+                  <li>
+                      <img src="<?php echo base_url();?>assets/image/dark.jpg" alt="" uk-cover>
+                  </li>
+                  <li>
+                      <img src="<?php echo base_url();?>assets/image/photo.jpg" alt="" uk-cover>
+                  </li>
+                  <li>
+                      <img src="<?php echo base_url();?>assets/image/photo2.jpg" alt="" uk-cover>
+                  </li>
+                  <li>
+                      <img src="<?php echo base_url();?>assets/image/photo2.jpg" alt="" uk-cover>
+                  </li>
+              </ul>
+
+              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+          </div>
       </div>
   </div>
 
