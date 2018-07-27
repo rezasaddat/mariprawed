@@ -16,8 +16,8 @@
   			<!-- modal wrap -->
 
 <!-- content views  -->
-  	<div id="content" class="content-com" hidden>
-  	</div>
+  	<!-- <div id="content" class="content-com" hidden>
+  	</div> -->
 
     <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
 
@@ -98,7 +98,7 @@
                 <li>
                   <div class="uk-text-center" style="font-size:8px;">
                     <p>
-                      <br><br><br>
+                      <br><br>
                       Indonesia <br>
                       2018 Mariprawed, Inc. All Rights Reserved
                     </p>
@@ -107,7 +107,7 @@
               </ul>
             </div>
       </div>
-      <div class="uk-container uk-position-relative" style="padding-right: 0px;margin-left: 280px;">
+      <div id="content" class="uk-container uk-position-relative" style="padding-right: 0px;margin-left: 280px;">
           <!-- <div class="uk-background-primary" style="bottom: 0;height: 703px;">Expand</div> -->
           <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 900; max-height: 703; animation: push; autoplay: true">
 
@@ -134,6 +134,7 @@
               <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
           </div>
+
       </div>
   </div>
 
@@ -150,7 +151,6 @@
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-        $('#content').load("application/views/Front/landing_page.php").fadeIn('slow');
-      $('#content').append('tadaaa  ');
+        // $('#content').load("application/views/Front/landing_page.php");
 });
 </script>
