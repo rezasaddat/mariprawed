@@ -22,11 +22,32 @@ class Front_end extends CI_Controller {
 	    parent::__construct();
 	    $this->load->helper('url');
 	    $this->load->library('session');
+	    $this->load->model('Model_domisili');
+        $this->load->model('Model_theme_prawed');
+        $this->load->model('Model_place_prawed');
 	  }
 
 	public function index()
 	{
 		$this->template->load('Template_front', 'Front/landing_page', '');
+	}
+
+	public function domisili()
+	{
+		$data = $this->Model_domisili->get_all();
+		echo json_encode($data);
+	}
+
+	public function tema()
+	{
+		$data = $this->Model_theme_prawed->get_all();
+		echo json_encode($data);
+	}
+
+	public function tempat()
+	{
+		$data = $this->Model_place_prawed->get_all();
+		echo json_encode($data);
 	}
 }
 ?>

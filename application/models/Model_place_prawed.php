@@ -81,7 +81,7 @@
     public function get_all(){
       return $this->db->select('*')
                       ->get($this->table)
-                      ->row();
+                      ->result();
     }
 
     public function get_data($id){
