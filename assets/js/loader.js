@@ -13,16 +13,69 @@ $(document).ready(function(){
 		$('#content').load(''+page+'').fadeIn('slow');
 		$('#footcopy').fadeIn('slow');
 	});
+
+	price();
 });
 
-$('#search').on('change', function(){
-	var page = "application/views/Front/ahp_result.php";
-	$('#content').fadeOut(100, function(){
+function price() {
+
+	$('#to').on('change', function(){
+		from =$('#from').val();
+		to = $('#to').val();
+
+		setCookie('from', from, 1);
+		setCookie('to', to, 1);
+
 		$(this).scrollTop(0);
-		$('#content').load(page).fadeIn('slow');
+  		$('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+	});	
+
+
+}
+
+function checkall() {
+  // Get the checkbox
+  var checkBox = document.getElementById("all");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+  	setCookie('searchall', 'all', 1);
+    $(this).scrollTop(0);
+  	$('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+  } else {
+    setCookie('searchall', 'null', 1);
+    $(this).scrollTop(0);
+  	$('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+  }
+}
+
+function checktema() {
+	var yourArray = [];
+	$("input:checkbox[name=tema]:checked").each(function(){
+	    yourArray.push($(this).val());
 	});
-	return false;
-});
+
+	if (yourArray != '') {
+		setCookie('tema', yourArray, 1);
+	}else{
+		setCookie('tema', null, 1);
+	}
+	$('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+}
+
+function checkdomisili() {
+	var yourArray = [];
+	$("input:checkbox[name=domisili]:checked").each(function(){
+	    yourArray.push($(this).val());
+	});
+
+	if (yourArray != '') {
+		setCookie('domisili', yourArray, 1);
+	}else{
+		setCookie('domisili', null, 1);
+	}
+	$('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+}
 
 $('.home').click(function(){
 	setCookie('page', "application/views/Front/landing_page.php",365);
@@ -32,7 +85,6 @@ $('.home').click(function(){
 
 $('.navmenu').click(function(){
 	var id_tempat = $(this).attr('data');
-	console.log(id_tempat);
 	// setCookie("page", page, 365);
 	// $('#content').fadeOut(100, function(){
 	// 	$(this).scrollTop(0);

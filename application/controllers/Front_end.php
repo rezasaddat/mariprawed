@@ -44,7 +44,15 @@ class Front_end extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function tempat()
+	public function tempat($getall, $getdomisili, $gettema, $from, $to)
+	{
+		$data = $this->Model_place_prawed->get_bykriteria($getall, $getdomisili, $gettema, $from, $to);
+		
+		// echo json_encode($getall."-".$getdomisili."-".$gettema."-".$from."-".$to);
+		echo json_encode($data);
+	}
+
+	public function search()
 	{
 		$data = $this->Model_place_prawed->get_all();
 		echo json_encode($data);

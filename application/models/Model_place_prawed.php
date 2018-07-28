@@ -118,5 +118,38 @@
     {
         return $this->db->insert('detail_tempat_prawed', $data);
     }
+
+    public function get_bykriteria($getall, $getdomisili, $gettema, $from, $to)
+    {
+
+        $data = $this->db->select('*')
+                        ->from($this->table);
+
+        if ($getall != 'null'){
+            
+        }
+
+        if ($getdomisili != 'null') {
+            $domisili = str_replace(",", " OR ", $getdomisili);
+            $data = $this->db->where('id_domisili', $domisili);
+        }
+
+        if ($gettema != 'null') {
+            $tema = str_replace(",", " OR ", $gettema);
+            $data = $this->db->where('id_domisili', $tema);
+        }
+
+        if ($from != 'null' && $to != 'null') {
+            $from = str_replace(",", "", $from);
+            $to = str_replace(",", "", $to);
+            $data = $this->db->where('harga >=', $from)
+                            ->where('harga <=', $to);
+        }
+
+        $data = $this->db->get()
+                        ->result();
+
+        return $data;
+    }
   }
 ?>

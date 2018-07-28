@@ -6,6 +6,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
   	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/uikit-rtl.css">
   	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/uikit.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/jquery-ui.css">
   </head>
 
   <body>
@@ -32,7 +33,7 @@
                     <div class="uk-margin">
                       <div class="uk-search uk-search-default">
                           <a href="" uk-search-icon></a>
-                          <input class="uk-search-input" type="search" placeholder="Search..." name="search" id="search">
+                          <input class="uk-search-input" type="text" name="search" id="search" placeholder="Search...">
                       </div>
                   </div>
                 </li>
@@ -50,11 +51,11 @@
                   <hr>
                   <b>TEMPAT</b>
                   <div class=" uk-grid" style="margin-bottom:5px">
-                      <label><input class="uk-checkbox" type="checkbox"> Semua Tempat</label>
+                      <label><input class="uk-checkbox" type="checkbox" id="all" onclick="checkall()"> Semua Tempat</label>
                       <form>
-                          <input class="uk-input money" type="text" placeholder="Harga from..." style="height:30px;width:85px">
+                          <input class="uk-input money" type="text" id="from" placeholder="Harga from..." style="height:30px;width:85px">
                           <label for="">-</label>
-                          <input class="uk-input money2" type="text" placeholder="to..." style="height:30px;width:80px">
+                          <input class="uk-input money2" type="text" id="to" placeholder="to..." style="height:30px;width:80px">
                       </form>
                   </div>
                 </li>
@@ -115,33 +116,7 @@
           </div>
       </div>
       <div id="content" class="uk-container uk-position-relative" style="padding-right: 0px;margin-left: 280px;">
-          <!-- <div class="uk-background-primary" style="bottom: 0;height: 703px;">Expand</div> -->
-          <!-- <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 900; max-height: 703; animation: push; autoplay: true">
-
-              <ul class="uk-slideshow-items">
-                  <li>
-                      <img src="<?php echo base_url();?>assets/image/dark.jpg" alt="" uk-cover>
-                      <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
-                <h3 class="uk-margin-remove">Bottom</h3>
-                <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-                  </li>
-                  <li>
-                      <img src="<?php echo base_url();?>assets/image/photo.jpg" alt="" uk-cover>
-                  </li>
-                  <li>
-                      <img src="<?php echo base_url();?>assets/image/photo2.jpg" alt="" uk-cover>
-                  </li>
-                  <li>
-                      <img src="<?php echo base_url();?>assets/image/photo3.jpg" alt="" uk-cover>
-                  </li>
-              </ul>
-
-              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
-          </div> -->
-
+        <!--  -->
       </div>
   </div>
 
@@ -154,14 +129,46 @@
 </html>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script rel="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui.js"></script>
+
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit-icons.js"></script>
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.mask.min.js"></script>
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/loader.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+  setCookie('domisili', 'null', 1);
+  setCookie('tema', 'null', 1);
+  setCookie('from', 'null', 1);
+  setCookie('to', 'null', 1);
+
   $('.money').mask("#,##0", {reverse: true});
   $('.money2').mask("#,##0", {reverse: true});
+
+  var data_autocomplete = [];
+  $.ajax({
+      url: "<?php echo site_url('Front_end/search/');?>",
+      dataType: "json",
+      success: function( data ) {
+        for(var i in data) {    
+            data_autocomplete.push({ 
+                "id" : data[i].id,
+                "value"  : data[i].nama_tempat,
+            });
+        }
+      }
+  });
+
+  $('#search').autocomplete({
+          source: data_autocomplete,
+          select: function( event, ui ) {
+            console.log(ui.item.id); 
+              // setCookie("id_tempat",ui.item.id,365);
+              // $(this).scrollTop(0);
+              // $('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+          }
+  });
 
   tema();
   domisili();
@@ -178,7 +185,7 @@ function tema(){
           cache:false,
       }).done(function (data) {
         for (var i = 0; i < data.length; i++) {
-          $('#tema').append('<li style="font-size:12px;"><input class="uk-checkbox" type="checkbox" id="tema" name="tema" value="'+data[i]['id']+'"> '+data[i]['nama_tema']+'</li>');
+          $('#tema').append('<li style="font-size:12px;"><input class="uk-checkbox" type="checkbox" id="tema" name="tema" value="'+data[i]['id']+'" onclick="checktema()"> '+data[i]['nama_tema']+'</li>');
         }
     });
 }
@@ -194,7 +201,7 @@ function domisili(){
           cache:false,
       }).done(function (data) {
         for (var i = 0; i < data.length; i++) {
-          $('#domisili').append('<li style="font-size:12px;"><input class="uk-checkbox" type="checkbox" id="tema" name="tema" value="'+data[i]['id']+'"> '+data[i]['nama_domisili']+'</li>');
+          $('#domisili').append('<li style="font-size:12px;"><input class="uk-checkbox" type="checkbox" id="domisili" name="domisili" value="'+data[i]['id']+'" onclick="checkdomisili()"> '+data[i]['nama_domisili']+'</li>');
         }
     });
 }

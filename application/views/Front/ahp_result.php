@@ -5,6 +5,12 @@
 
 <script rel="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+  var getall = getCookie('searchall');
+  var from = getCookie('from');
+  var to = getCookie('to');
+  var getatema = getCookie('tema');
+  var getadomisili = getCookie('domisili');
+
 $(document).ready(function(){
   tempat();
 
@@ -18,19 +24,22 @@ $(document).ready(function(){
 function tempat(){
   var url = window.location.href;
   $.ajax({
-          url: url + "Front_end/tempat/",
+          url: url + "Front_end/tempat/"+getall+"/"+getadomisili+"/"+getatema+"/"+from+"/"+to,
           type: "GET",
           dataType:'json',
-          processData: false,
-          contentType: false,
-          cache:false,
+          // processData: false,
+          // contentType: false,
+          // cache:false,
       }).done(function (data) {
         console.log(data);
         for (var i = 0; i < data.length; i++) {
-          $('#tempat').append('<div class="uk-card navmenu" data="'+data[i]['id']+'" style="cursor:pointer;">'+
-              '<img src="upload/prawed/'+data[i]['gambar']+'">'+
-              '<div class="uk-card" style="height:40px;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'</div>'+
-          '</div>');
+          if (data[i]['id']!= null) {
+
+            $('#tempat').append('<div class="uk-card navmenu" data="'+data[i]['id']+'" style="cursor:pointer;">'+
+                '<img src="upload/prawed/'+data[i]['gambar']+'">'+
+                '<div class="uk-card" style="height:40px;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'</div>'+
+            '</div>');
+          }
         }
     });
 }
@@ -38,7 +47,6 @@ function tempat(){
 function load_page(){
   $('.navmenu').click(function(){
     var id_tempat = $(this).attr('data');
-    console.log(id_tempat);
     // setCookie("page", page, 365);
     // $('#content').fadeOut(100, function(){
     //  $(this).scrollTop(0);
