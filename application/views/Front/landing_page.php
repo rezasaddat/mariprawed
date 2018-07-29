@@ -1,6 +1,6 @@
-<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 900; max-height: 703; animation: push; autoplay: true">
+<div class="uk-position-relative uk-visible-toggle uk-light forwidth" uk-slideshow="animation: push; autoplay: true">
 
-    <ul class="uk-slideshow-items">
+    <ul class="uk-slideshow-items forheight">
         <li>
             <img src="assets/image/dark.jpg" alt="" uk-cover>
             <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">

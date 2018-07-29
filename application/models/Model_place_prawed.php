@@ -130,13 +130,13 @@
         }
 
         if ($getdomisili != 'null') {
-            $domisili = str_replace(",", " OR ", $getdomisili);
+            $domisili = explode(",", $getdomisili);
             $data = $this->db->where('id_domisili', $domisili);
         }
 
         if ($gettema != 'null') {
-            $tema = str_replace(",", " OR ", $gettema);
-            $data = $this->db->where('id_domisili', $tema);
+            $tema = explode(",", $gettema);
+            $data = $this->db->where_in('id_tema', $tema);
         }
 
         if ($from != 'null' && $to != 'null') {

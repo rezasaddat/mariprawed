@@ -11886,3 +11886,65 @@ iframe.uk-cover {
     page-break-after: avoid;
   }
 }
+
+
+.forwidth {
+  width: 100%
+}
+
+.forheight {
+  height: 703px
+}
+
+@media(min-width: 1500px){
+  .forwidth {
+    width: 103%;
+  }
+}
+
+@media(min-width: 1550px){
+  .forwidth {
+    width: 108%;
+  }
+}
+
+@media(min-width: 1600px){
+  .forwidth {
+    width: 111%;
+  }
+}
+
+@media(min-width: 1650px){
+  .forwidth {
+    width: 115%;
+  }
+}
+
+@media(min-width: 1700px){
+  .forwidth {
+    width: 125%;
+  }
+}
+
+@media(min-width: 1800px){
+  .forwidth {
+    width: 135%;
+  }
+}
+
+@media(min-width: 1920px){
+  .forwidth {
+    width: 140%;
+  }
+}
+
+@media(min-width: 2000px){
+  .forwidth {
+    width: 150%;
+  }
+}
+@media(min-height: 1280px ){
+  .forheight {
+    height: 1280px
+  }
+}

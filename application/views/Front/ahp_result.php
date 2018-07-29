@@ -32,6 +32,7 @@ function tempat(){
           // cache:false,
       }).done(function (data) {
         console.log(data);
+        console.log(getatema);
         for (var i = 0; i < data.length; i++) {
           if (data[i]['id']!= null) {
 

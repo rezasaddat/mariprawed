@@ -11109,7 +11109,7 @@
         },
 
         data: {
-            ratio: '16:9',
+            ratio: '12.6:9',
             minHeight: false,
             maxHeight: false,
             selList: '.uk-slideshow-items',
@@ -11136,7 +11136,7 @@
                     height$$1 = Math.min(this.maxHeight, height$$1);
                 }
 
-                return {height: height$$1};
+                // return {height: height$$1};
             },
 
             write: function(ref) {
