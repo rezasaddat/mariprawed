@@ -30,7 +30,7 @@
                     <img src="<?php echo base_url();?>assets/gambar/logo-mariprawed.png" alt="" style="width:100%;margin-left:-15px;margin-top:-25px;cursor: pointer;" class="home">
                   </li>
                 <li>
-                    <div class="uk-margin uk-text-left">
+                    <div class="uk-margin uk-text">
                       <div class="uk-search uk-search-default">
                           <a href="" uk-search-icon></a>
                           <input class="uk-search-input" type="text" name="search" id="search" placeholder="Search...">

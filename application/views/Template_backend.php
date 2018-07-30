@@ -46,7 +46,10 @@
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
 
                 <li>
-                	<a href="">Logout</a>
+                	<a target="_blank" style="margin-top: 10px">
+                    <span uk-icon="icon: sign-out" class="uk-margin-small uk-icon"></span>
+                    <span class="" uk-toggle="target: #modal-example">sign out</span>
+                  </a>
                 </li>
               </ul>
           	</div>
