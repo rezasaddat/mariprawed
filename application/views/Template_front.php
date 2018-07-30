@@ -22,24 +22,24 @@
 
     <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
 
-      <div class="uk-width-medium uk-padding tm-sidebar-left" style="position:fixed">
+      <div class="uk-width-medium uk-padding tm-sidebar-left" style="position:fixed; padding: 40px 40px 40px 20px;">
           <div name="kolom1" class="uk-text-center">
             <!-- kolom 1 -->
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                   <li class="uk-active">
                     <img src="<?php echo base_url();?>assets/gambar/logo-mariprawed.png" alt="" style="width:100%;margin-left:-15px;margin-top:-25px;cursor: pointer;" class="home">
                   </li>
-                  <li>
-                    <div class="uk-margin">
+                <li>
+                    <div class="uk-margin uk-text-left">
                       <div class="uk-search uk-search-default">
                           <a href="" uk-search-icon></a>
                           <input class="uk-search-input" type="text" name="search" id="search" placeholder="Search...">
                       </div>
-                  </div>
+                    </div>
                 </li>
 
                 <li>
-                  <h3 style="padding-top:35px;margin-bottom:0px;">FILTERS</h3>
+                  <h3 style="padding-top:30px;margin-bottom:0px;">FILTERS</h3>
                 </li>
               </ul>
             </div>
@@ -89,13 +89,19 @@
                       </ul>
                   </div>
                 </li>
+                <li class="uk-text-center">
+                  <a target="_blank" style="margin-top: 10px">
+                    <span uk-icon="icon: sign-in" class="uk-margin-small uk-icon"></span>
+                    <span class="" uk-toggle="target: #modal-example">sign in</span>
+                  </a>
+                </li>
               </ul>
           </div>
           <div class="uk-text-center">
               <!-- kolom 1 -->
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
               <li>
-                <h3 style="padding-top:35px;margin-bottom:0px">CONTACT</h3>
+                <h3 style="margin-bottom:0px">CONTACT</h3>
                 <div class="" style="margin-bottom:5px">
                     <a href="#"> <img src="<?php echo base_url();?>assets/image/youtube.png" alt="" style="width:8%"></a>
                     <a href="#"> <img src="<?php echo base_url();?>assets/image/twit.png" alt="" style="width:8%"></a>
@@ -129,12 +135,12 @@
 </html>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script rel="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+<script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit.js"></script>
+<script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit-icons.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.mask.min.js"></script>
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui.js"></script>
 
-<script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit-icons.js"></script>
-<script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/uikit.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.mask.min.js"></script>
+
 <script rel="javascript" type="text/javascript" src="<?php echo base_url();?>assets/js/loader.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
