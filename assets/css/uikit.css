@@ -11896,6 +11896,10 @@ iframe.uk-cover {
   height: 703px
 }
 
+.height-detail{
+  height: 500px;
+}
+
 @media(min-width: 1500px){
   .forwidth {
     width: 103%;

@@ -11,7 +11,6 @@ $(document).ready(function(){
 	$('#content').fadeOut(1000, function(){
 		$(this).scrollTop(0);
 		$('#content').load(''+page+'').fadeIn('slow');
-		$('#footcopy').fadeIn('slow');
 	});
 
 	price();
@@ -104,4 +103,11 @@ function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function convertToRupiah(angka){
+    var rupiah = '';
+    var angkarev = angka.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+',';
+    return rupiah.split('',rupiah.length-1).reverse().join('');
 }

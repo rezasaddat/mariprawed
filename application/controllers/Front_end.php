@@ -57,5 +57,11 @@ class Front_end extends CI_Controller {
 		$data = $this->Model_place_prawed->get_all();
 		echo json_encode($data);
 	}
+
+	public function detail_tempat($id_tempat)
+	{
+		$data = $this->Model_place_prawed->get_byid($id_tempat);
+		echo json_encode($data);
+	}
 }
 ?>

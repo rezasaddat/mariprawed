@@ -31,8 +31,6 @@ function tempat(){
           // contentType: false,
           // cache:false,
       }).done(function (data) {
-        console.log(data);
-        console.log(getatema);
         for (var i = 0; i < data.length; i++) {
           if (data[i]['id']!= null) {
 
@@ -48,11 +46,12 @@ function tempat(){
 function load_page(){
   $('.navmenu').click(function(){
     var id_tempat = $(this).attr('data');
-    // setCookie("page", page, 365);
-    // $('#content').fadeOut(100, function(){
-    //  $(this).scrollTop(0);
-    //  $('#content').load(page).fadeIn('slow');
-    // });
+    setCookie("id_tempat", id_tempat, 365);
+    $('#content').fadeOut(100, function(){
+      $(this).scrollTop(0);
+      setCookie("page", "application/views/Front/detail_tempat.php", 365);
+      $('#content').load("application/views/Front/detail_tempat.php").fadeIn('slow');
+    });
     return false;
   });
 }

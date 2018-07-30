@@ -151,5 +151,29 @@
 
         return $data;
     }
+
+    public function get_byid($id_tempat)
+    {   
+        $check = $this->db->select('*')->where('id_tempat', $id_tempat)->get('detail_tempat_prawed')->result();
+
+        if (count($check) > 0) {
+            $data = $this->db->select('t.id, t.nama_tempat, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dt.gambar, dom.nama_domisili, tema.nama_tema')
+                        ->from('tempat_prawed as t')
+                        ->join('detail_tempat_prawed as dt', 't.id = dt.id_tempat')
+                        ->join('domisili as dom','t.id_domisili = dom.id')
+                        ->join('tema', 't.id_tema = tema.id')
+                        ->where('t.id', $id_tempat)
+                        ->get()->result();
+        }else{
+            $data = $this->db->select('t.id, t.nama_tempat, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dom.nama_domisili, tema.nama_tema')
+                        ->from('tempat_prawed as t')
+                        ->join('domisili as dom','t.id_domisili = dom.id')
+                        ->join('tema', 't.id_tema = tema.id')
+                        ->where('t.id', $id_tempat)
+                        ->get()->result();
+        }
+
+        return $data;
+    }
   }
 ?>
