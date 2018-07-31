@@ -27,6 +27,9 @@
             <div class="uk-form-stacked">
 
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                <li>
+                  <a href="<?php echo base_url('Admin') ?>">Dashboard</a>
+                </li>
               	<li>
                 	<a href="<?php echo base_url('Account') ?>">Accounts</a>
                 </li>
