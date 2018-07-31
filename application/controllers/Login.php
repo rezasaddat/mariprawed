@@ -22,12 +22,38 @@ class Login extends CI_Controller {
     	parent::__construct();
     	$this->load->helper('url');
     	$this->load->library('session');
+    	$this->load->model('Model_login');
   	}
 
 	public function index()
 	{	
 		$this->template->load('Template_login', 'Login/index', '');
 	}
+
+	public function Login(){
+            $username   =  $_POST['username'];
+            $password   =  $_POST['password'];
+            $login      =  $this->Model_login->check_log($username, $password);
+
+            if(count($login) > 0 ){
+                // $r=  $login;
+                $data=array('id'       => $login->id,
+                            'role'         => $login->role,
+                            // 'email'  => $login->email,
+                            'username'      => $login->username,
+                            'status_login'  => '1');
+                $this->session->set_userdata($data);
+                echo json_encode(1);
+            }
+            else{
+                echo json_encode(0);   
+            }
+    }
+    
+    function Logout(){
+        $this->session->sess_destroy();
+        redirect(base_url());
+    }
 
 	
 }

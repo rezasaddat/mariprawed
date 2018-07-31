@@ -22,12 +22,13 @@
                   </li>
               </ul>
             </div>
+
             <hr>
             <div class="uk-form-stacked">
 
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
               	<li>
-                	<a href="">Accounts</a>
+                	<a href="<?php echo base_url('Account') ?>">Accounts</a>
                 </li>
                 <li>
                 	<a href="<?php echo base_url('Domisili') ?>">Domicile</a>
@@ -46,13 +47,14 @@
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
 
                 <li>
-                	<a target="_blank" style="margin-top: 10px">
+                	<a target="_blank" href="<?php echo base_url('Login/logout');?>" style="margin-top: 10px">
                     <span uk-icon="icon: sign-out" class="uk-margin-small uk-icon"></span>
                     <span class="" uk-toggle="target: #modal-example">sign out</span>
                   </a>
                 </li>
               </ul>
           	</div>
+            <p style="font-size: 10px;">Login as <?php echo $this->session->userdata('username');?></p>
       </div>
       <div class="row">
       	

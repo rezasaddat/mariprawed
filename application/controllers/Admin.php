@@ -22,11 +22,13 @@ class Admin extends CI_Controller {
     	parent::__construct();
     	$this->load->helper('url');
     	$this->load->library('session');
+    	$this->load->model('Model_place_prawed');
   	}
 
 	public function index()
 	{	
 		$data['title'] = "Dashboard";
+		$data['prawed'] = $this->Model_place_prawed->get_all();
 		$this->template->load('Template_backend', 'Back/index', $data);
 	}
 

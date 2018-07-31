@@ -129,15 +129,16 @@
             
         }
 
-        if ($getdomisili != 'null') {
-            $domisili = explode(",", $getdomisili);
-            $data = $this->db->where('id_domisili', $domisili);
-        }
-
         if ($gettema != 'null') {
             $tema = explode(",", $gettema);
             $data = $this->db->where_in('id_tema', $tema);
         }
+        
+        if ($getdomisili != 'null') {
+            $domisili = explode(",", $getdomisili);
+            $data = $this->db->where_in('id_domisili', $domisili);
+        }
+
 
         if ($from != 'null' && $to != 'null') {
             $from = str_replace(",", "", $from);
