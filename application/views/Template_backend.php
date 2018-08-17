@@ -25,7 +25,7 @@
 
             <hr>
             <div class="uk-form-stacked">
-
+              <h4>Main Control</h4>
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
                 <li>
                   <a href="<?php echo base_url('Admin') ?>">Dashboard</a>
@@ -45,6 +45,20 @@
               </ul>
           	</div>
           	<hr>
+
+            <div class="uk-form-stacked">
+              <h4>AHP Proccess</h4>
+              <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                <li>
+                  <a href="<?php echo base_url('Kriteria') ?>">Criteria</a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('Account') ?>">Alternative</a>
+                </li>
+              </ul>
+            </div>
+            <hr>
+
           	<div class="uk-form-stacked">
 
               <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>

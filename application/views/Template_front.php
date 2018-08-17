@@ -90,7 +90,7 @@
                   </div>
                 </li>
                 <li class="uk-text-center">
-                  <a target="_blank" href="<?php echo base_url('Login');?>" style="margin-top: 10px">
+                  <a href="<?php echo base_url('Login');?>" style="margin-top: 10px">
                     <span uk-icon="icon: sign-in" class="uk-margin-small uk-icon"></span>
                     <span class="" uk-toggle="target: #modal-example">sign in</span>
                   </a>
