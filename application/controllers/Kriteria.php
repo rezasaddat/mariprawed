@@ -180,7 +180,7 @@ class Kriteria extends CI_Controller {
 			{
 				for($z=0;$z<$jumlah_kriteria;$z++)
 				{
-					$jumlah_per_cell = $jumlah_per_cell + $array1[$y][$z];
+					$jumlah_per_cell = $jumlah_per_cell + $array1[$z][$y];
 				}
 				$jumlah_per_baris[$y] = $jumlah_per_cell;
 				$jumlah_per_cell = 0;
@@ -193,7 +193,7 @@ class Kriteria extends CI_Controller {
 			{
 				for($n=0;$n<$jumlah_kriteria;$n++)
 				{				
-					$array2[$m][$n] = round($array1[$m][$n]/$jumlah_per_baris[$m],2);
+					$array2[$n][$m] = round($array1[$n][$m]/$jumlah_per_baris[$m],2);
 					//echo '['.$m.']['.$n.'] = '.$array2[$m][$n];
 					//echo '<br />';
 				}
@@ -206,7 +206,7 @@ class Kriteria extends CI_Controller {
 			{
 				for($p=0;$p<$jumlah_kriteria;$p++)
 				{				
-					$jumlah_per_cell2 = $jumlah_per_cell2 + $array2[$p][$o];
+					$jumlah_per_cell2 = $jumlah_per_cell2 + $array2[$o][$p];
 				}
 				$jumlah_per_baris2[$o] = $jumlah_per_cell2;
 				$prioritas[$o] = round($jumlah_per_cell2/$jumlah_kriteria, 2);
@@ -226,7 +226,7 @@ class Kriteria extends CI_Controller {
 			{
 				for($s=0;$s<$jumlah_kriteria;$s++)
 				{				
-					$array3[$s][$r] = round($array1[$s][$r]*$prioritas[$r],2);
+					$array3[$r][$s] = round($array1[$s][$r]*$prioritas[$r],2);
 					//echo '['.$r.']['.$s.'] = '.$array3[$r][$s];
 					//echo '<br />';
 				}
@@ -245,7 +245,7 @@ class Kriteria extends CI_Controller {
 					//echo '<br />';
 				}
 				$jumlah_per_baris3[$t] = $jumlah_per_cell3;
-				$hasil[$t] = $jumlah_per_baris3[$t] + $prioritas[$t];
+				$hasil[$t] = $jumlah_per_baris3[$t] / $prioritas[$t];
 				$jumlah = $jumlah + $hasil[$t];
 				$jumlah_per_cell3 = 0;
 				//echo 'jumlah baris 3 ['.$t.'] = '.$jumlah_per_baris3[$t];

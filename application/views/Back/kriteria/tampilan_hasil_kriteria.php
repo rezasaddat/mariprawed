@@ -151,7 +151,7 @@
 				
 				echo '<td>'.$jumlah_per_baris3[$i4].'</td>';
 				echo '<td>'.$prioritas[$i4].'</td>';
-				$sum = $jumlah_per_baris3[$i4] + $prioritas[$i4];
+				$sum = $jumlah_per_baris3[$i4] / $prioritas[$i4];
 				echo '<td>'.$sum.'</td>';
 				echo '</tr>';
 				$i4++;
