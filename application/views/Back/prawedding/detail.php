@@ -9,6 +9,7 @@
 
                 <b><h4><?php echo $this->template->convertrupiah($prawed->harga);?></h4></b>
                 <br>
+                Rating : <?php echo $prawed->rating;?><br>
                 <?php echo $prawed->alamat;?>,
                 <?php echo $domisili;?>
                 <br><br>

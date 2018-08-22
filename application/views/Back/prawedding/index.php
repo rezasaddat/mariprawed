@@ -11,9 +11,10 @@
                   <tr>
                       <th style="width: 20%;">Picture</th>
                       <th>Place Name</th>
-                      <th>Address</th>
+                      <th>Harga</th>
                       <th>Domisili</th>
                       <th>Theme</th>
+                      <th>Rating</th>
                       <th></th>
                   </tr>
               </thead>
@@ -97,6 +98,13 @@
                 </div>
               </div>
 
+              <div class="uk-margin">
+                <label class="uk-form-label" for="place_rating">Rating 1 - 5</label>
+                <div class="uk-form-controls">
+                  <input class="uk-input" type="number" placeholder="Place Rating" name="place_rating" id="place_rating">
+                </div>
+              </div>
+
               <div class="uk-margin" uk-margin>
                   <label class="uk-form-label" for="gambar">Picture</label>
                   <div uk-form-custom="target: true">
@@ -158,6 +166,7 @@ function add_place(){
       datasend.append('place_address', $("#place_address").val());
       datasend.append('place_contact', $("#place_contact").val());
       datasend.append('place_price', $("#place_price").val());
+      datasend.append('place_rating', $("#place_rating").val());
       datasend.append('id_dom', $("#id_dom").val());
       datasend.append('id_theme', $("#id_theme").val());
       datasend.append('gambar', $("#gambar")[0].files[0]);

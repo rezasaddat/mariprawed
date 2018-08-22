@@ -65,35 +65,72 @@ if ( ! function_exists('form_open'))
 	{
 		$CI =& get_instance();
 
-		if ($attributes == '')
+		// If no action is provided then set to the current url
+		if ( ! $action)
 		{
-			$attributes = 'method="post"';
+			$action = $CI->config->site_url($CI->uri->uri_string());
 		}
-
 		// If an action is not a full URL then turn it into one
-		if ($action && strpos($action, '://') === FALSE)
+		elseif (strpos($action, '://') === FALSE)
 		{
 			$action = $CI->config->site_url($action);
 		}
 
-		// If no action is provided then set to the current url
-		$action OR $action = $CI->config->site_url($CI->uri->uri_string());
+		$attributes = _attributes_to_string($attributes);
 
-		$form = '<form action="'.$action.'"';
-
-		$form .= _attributes_to_string($attributes, TRUE);
-
-		$form .= '>';
-
-		// Add CSRF field if enabled, but leave it out for GET requests and requests to external websites	
-		if ($CI->config->item('csrf_protection') === TRUE AND ! (strpos($action, $CI->config->site_url()) === FALSE OR strpos($form, 'method="get"')))	
+		if (stripos($attributes, 'method=') === FALSE)
 		{
-			$hidden[$CI->security->get_csrf_token_name()] = $CI->security->get_csrf_hash();
+			$attributes .= ' method="post"';
 		}
 
-		if (is_array($hidden) AND count($hidden) > 0)
+		if (stripos($attributes, 'accept-charset=') === FALSE)
 		{
-			$form .= sprintf("<div style=\"display:none\">%s</div>", form_hidden($hidden));
+			$attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
+		}
+
+		$form = '<form action="'.$action.'"'.$attributes.">\n";
+
+		if (is_array($hidden))
+		{
+			foreach ($hidden as $name => $value)
+			{
+				$form .= '<input type="hidden" name="'.$name.'" value="'.html_escape($value).'" />'."\n";
+			}
+		}
+
+		// Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
+		if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
+		{
+			// Prepend/append random-length "white noise" around the CSRF
+			// token input, as a form of protection against BREACH attacks
+			if (FALSE !== ($noise = $CI->security->get_random_bytes(1)))
+			{
+				list(, $noise) = unpack('c', $noise);
+			}
+			else
+			{
+				$noise = mt_rand(-128, 127);
+			}
+
+			// Prepend if $noise has a negative value, append if positive, do nothing for zero
+			$prepend = $append = '';
+			if ($noise < 0)
+			{
+				$prepend = str_repeat(" ", abs($noise));
+			}
+			elseif ($noise > 0)
+			{
+				$append  = str_repeat(" ", $noise);
+			}
+
+			$form .= sprintf(
+				'%s<input type="hidden" name="%s" value="%s" />%s%s',
+				$prepend,
+				$CI->security->get_csrf_token_name(),
+				$CI->security->get_csrf_hash(),
+				$append,
+				"\n"
+			);
 		}
 
 		return $form;

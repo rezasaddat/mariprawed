@@ -46,9 +46,10 @@ class Place_prawed extends CI_Controller {
             $row = array();
             $row[] = "<center><img style='width:100%' src='".base_url('upload/prawed/').''.$prawed->gambar."' /></center>";
             $row[] = $prawed->nama_tempat;
-            $row[] = $prawed->alamat;
+            $row[] = $this->template->convertrupiah($prawed->harga);
             $row[] = $this->Model_domisili->get_data($prawed->id_domisili)->nama_domisili;
             $row[] = $this->Model_theme_prawed->get_data($prawed->id_tema)->nama_tema;
+            $row[] = str_replace('0', '', $prawed->rating);
             $row[] = '<center><a href="'.base_url('Place_prawed/edit_/'.$prawed->id).'" style="text-decoration: none; color:black;" title="edit">
                   <span uk-icon="icon: pencil" class="uk-margin-small-right uk-icon"></span>
                 </a></center>
@@ -86,7 +87,8 @@ class Place_prawed extends CI_Controller {
     	$place_name = $_POST['place_name'];
         $place_address = $_POST['place_address'];
         $place_contact = $_POST['place_contact'];
-        $place_price = str_replace(",", "", $_POST['place_price']);
+        $place_price = $_POST['place_price'];
+        $place_rating = $_POST['place_rating'];
         $place_info = $_POST['place_info'];
         $id_dom = $_POST['id_dom'];
         $id_theme = $_POST['id_theme'];
@@ -95,7 +97,7 @@ class Place_prawed extends CI_Controller {
         $ext1 = end($temp);
         $filename = $filename = md5(date("Y-m-d H:i:s") . $place_name);
         $filename1 = $filename . '.' . $ext1;
-
+        $place_price = str_replace(",", "", $_POST['place_price']);
 
         if (file_exists($path . $filename1)) {
             echo json_encode("Photo already exist");
@@ -107,6 +109,7 @@ class Place_prawed extends CI_Controller {
                     'alamat' => $place_address,
                     'kontak' => $place_contact,
                     'harga' => $place_price,
+                    'rating' => $place_rating * 10,
                     'gambar' => $filename1,
                     'id_domisili' => $id_dom,
                     'id_tema' => $id_theme,
@@ -135,6 +138,7 @@ class Place_prawed extends CI_Controller {
         $place_address = $this->input->post('place_address');
         $place_contact = $this->input->post('place_contact');
         $place_price = $this->input->post('place_price');
+        $place_rating = $this->input->post('place_rating');
         $id_dom = $this->input->post('id_dom');
         $id_theme = $this->input->post('id_theme');
         $place_info = $this->input->post('place_info');
@@ -144,12 +148,15 @@ class Place_prawed extends CI_Controller {
         $filename = $filename = md5(date("Y-m-d H:i:s") . $place_name);
         $filename1 = $filename . '.' . $ext1;
 
+        $place_price = str_replace(",", "", $this->input->post('place_price'));
+
         if ($_FILES["gambar"]["name"] == "") {
             $data = array(
                 'nama_tempat' => $place_name,
                 'alamat' => $place_address,
                 'kontak' => $place_contact,
                 'harga' => $place_price,
+                'rating' => $place_rating * 10,
                 'id_domisili' => $id_dom,
                 'id_tema' => $id_theme,
                 'keterangan' => $place_info,
@@ -161,6 +168,7 @@ class Place_prawed extends CI_Controller {
                     'alamat' => $place_address,
                     'kontak' => $place_contact,
                     'harga' => $place_price,
+                    'rating' => $place_rating * 10,
                     'gambar' => $filename1,
                     'id_domisili' => $id_dom,
                     'id_tema' => $id_theme,

@@ -53,7 +53,7 @@
                   <a href="<?php echo base_url('Kriteria') ?>">Criteria</a>
                 </li>
                 <li>
-                  <a href="<?php echo base_url('Account') ?>">Alternative</a>
+                  <a href="<?php echo base_url('Alternatif') ?>">Alternative</a>
                 </li>
               </ul>
             </div>

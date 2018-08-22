@@ -1,5 +1,5 @@
 <h2 class="uk-modal-title">New Place Prawed</h2>
-<?php echo form_open_multipart(site_url("Place_prawed/edit_exe/".$prawed->id), array("class" => "formValidate")) ?>
+<?php echo form_open_multipart(base_url("Place_prawed/edit_exe/".$prawed->id), array("class" => "formValidate")) ?>
   <fieldset class="uk-fieldset">
       <div class="uk-margin">
           <label class="uk-form-label" for="place_name">Place name</label>
@@ -51,10 +51,17 @@
         </div>
       </div>
 
+      <div class="uk-margin">
+        <label class="uk-form-label" for="place_rating">Rating 1 - 5</label>
+        <div class="uk-form-controls">
+          <input class="uk-input" type="number" placeholder="Place Rating" name="place_rating" id="place_rating" value="<?php echo str_replace('0', '', $prawed->rating);?>">
+        </div>
+      </div>
+
       <div class="uk-margin" uk-margin>
           <label class="uk-form-label" for="gambar">Picture</label>
           <div uk-form-custom="target: true">
-              <input type="file" name="gambar" id="gambar" >
+              <input type="file" name="gambar" id="gambar">
               <input class="uk-input uk-form-width-large" type="text" placeholder="<?php echo $prawed->gambar;?>">
           </div>
       </div>
