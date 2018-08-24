@@ -44,8 +44,12 @@ function view_detail(){
           type: "GET",
           dataType:'json',
       }).done(function (data) {
+        console.log(data);
+        rating = data[0]['rating'];
+        rate = rating.replace('0','');
         $('#descript').append('<h3 style="margin-bottom: 0; margin-top: 0;"> '+data[0]['nama_tempat']+'('+data[0]['nama_tema']+')</h3>'+
                 '<br><b><h4>'+convertToRupiah(data[0]['harga'])+'</h4></b>'+
+                '<br><b> Rating : '+rate+'</b>'+
                 '<br>'+data[0]['alamat']+', '+data[0]['nama_domisili']+'<br><br>'+
 
                 'Contacts : '+data[0]['kontak']+'<br> More information : <br>'+data[0]['keterangan']);

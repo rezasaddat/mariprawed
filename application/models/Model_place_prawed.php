@@ -153,12 +153,38 @@
         return $data;
     }
 
+    public function get_rekomend($getdomisili, $gettema)
+    {
+        $ahp = $this->db->select('nama_kriteria')
+                        ->select_max('prioritas_kriteria','nilai_alternatif')
+                        ->get('ahp_kriteria')->row();
+
+        $data = $this->db->select('*')
+                        ->from($this->table);
+
+        if ($gettema != 'null') {
+            $tema = explode(",", $gettema);
+            $data = $this->db->where_in('id_tema', $tema);
+        }
+        
+        if ($getdomisili != 'null') {
+            $domisili = explode(",", $getdomisili);
+            $data = $this->db->where_in('id_domisili', $domisili);
+        }
+
+        $data = $this->db->where('rating >=',$ahp->nilai_alternatif * 100)
+                        ->get()
+                        ->result();
+
+        return $data;
+    }
+
     public function get_byid($id_tempat)
     {   
         $check = $this->db->select('*')->where('id_tempat', $id_tempat)->get('detail_tempat_prawed')->result();
 
         if (count($check) > 0) {
-            $data = $this->db->select('t.id, t.nama_tempat, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dt.gambar, dom.nama_domisili, tema.nama_tema')
+            $data = $this->db->select('t.id, t.rating, t.nama_tempat, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dt.gambar, dom.nama_domisili, tema.nama_tema')
                         ->from('tempat_prawed as t')
                         ->join('detail_tempat_prawed as dt', 't.id = dt.id_tempat')
                         ->join('domisili as dom','t.id_domisili = dom.id')
@@ -166,7 +192,7 @@
                         ->where('t.id', $id_tempat)
                         ->get()->result();
         }else{
-            $data = $this->db->select('t.id, t.nama_tempat, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dom.nama_domisili, tema.nama_tema')
+            $data = $this->db->select('t.id, t.nama_tempat, t.rating, t.alamat, t.kontak, t.harga, t.keterangan, t.gambar as gdefault, dom.nama_domisili, tema.nama_tema')
                         ->from('tempat_prawed as t')
                         ->join('domisili as dom','t.id_domisili = dom.id')
                         ->join('tema', 't.id_tema = tema.id')

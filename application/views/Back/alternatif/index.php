@@ -60,7 +60,7 @@ function Search_prawed(){
 
                 $('#tempat').append('<div class="uk-card navmenu" data="'+data[i]['id']+'" style="cursor:pointer;">'+
                     '<img src="upload/prawed/'+data[i]['gambar']+'">'+
-                    '<div class="uk-card" style="height:40px;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'<br> Rating : '+rate+'</div>'+
+                    '<div class="uk-card" style="height:fit-content;background-color:#dadada;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'<br> Rating : '+rate+'</div>'+
                 '</div>');
               }
             }

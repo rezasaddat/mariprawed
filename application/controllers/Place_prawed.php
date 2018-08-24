@@ -134,6 +134,8 @@ class Place_prawed extends CI_Controller {
 	
 	public function edit_exe($id)
     {
+        $path = $_SERVER['DOCUMENT_ROOT']."/mariprawed/upload/prawed/";
+        
     	$place_name = $this->input->post('place_name');
         $place_address = $this->input->post('place_address');
         $place_contact = $this->input->post('place_contact');

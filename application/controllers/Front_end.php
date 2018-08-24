@@ -52,6 +52,12 @@ class Front_end extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function tempat_rekomend($getdomisili, $gettema)
+	{
+		$data = $this->Model_place_prawed->get_rekomend($getdomisili, $gettema);
+		echo json_encode($data);
+	}
+
 	public function search()
 	{
 		$data = $this->Model_place_prawed->get_all();

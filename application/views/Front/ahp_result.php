@@ -1,5 +1,11 @@
-<div id="tempat" class="uk-grid-small uk-child-width-1-4@s uk-flex-left uk-text-left" uk-grid style="margin-top: 15px;">
+<div id="recomend_place" style="display: none"></div>
+<h4> Recomended Place's</h4><br>
+<div id="result_rekomend" class="uk-grid-small uk-child-width-1-4@s uk-flex-left uk-text-left" uk-grid style="margin-top: 15px;">
     
+</div>
+<hr>
+<h4> All Result . . .</h4><br>
+<div id="tempat" class="uk-grid-small uk-child-width-1-4@s uk-flex-left uk-text-left" uk-grid style="margin-top: 15px;">
     
 </div>
 
@@ -13,6 +19,7 @@
 
 $(document).ready(function(){
   tempat();
+  tempat_rekomend();
 
   UIkit.notification({message: 'Loading...'});
   setTimeout(function(){
@@ -33,10 +40,37 @@ function tempat(){
       }).done(function (data) {
         for (var i = 0; i < data.length; i++) {
           if (data[i]['id']!= null) {
-
+            rating = data[i]['rating'];
+            rate = rating.replace('0','');
             $('#tempat').append('<div class="uk-card navmenu" data="'+data[i]['id']+'" style="cursor:pointer;">'+
                 '<img src="upload/prawed/'+data[i]['gambar']+'">'+
-                '<div class="uk-card" style="height:40px;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'</div>'+
+                '<div class="uk-card" style="height:fit-content;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'<br>Rating : '+rate+'</div>'+
+            '</div>');
+          }
+        }
+    });
+}
+
+function tempat_rekomend(){
+  var url = window.location.href;
+  $.ajax({
+          url: url + "Front_end/tempat_rekomend/"+"/"+getadomisili+"/"+getatema,
+          type: "GET",
+          dataType:'json',
+          // processData: false,
+          // contentType: false,
+          // cache:false,
+      }).done(function (data) {
+
+        document.getElementById('recomend_place').style.display = "block";
+
+        for (var i = 0; i < data.length; i++) {
+          if (data[i]['id']!= null) {
+            rating = data[i]['rating'];
+            rate = rating.replace('0','');
+            $('#result_rekomend').append('<div class="uk-card navmenu" data="'+data[i]['id']+'" style="cursor:pointer;">'+
+                '<img src="upload/prawed/'+data[i]['gambar']+'">'+
+                '<div class="uk-card" style="height:fit-content;background-color:#f3f3f3;color:#5a5a5a;font-size:12px;padding:10px">'+data[i]['nama_tempat']+'<br>Rating : '+rate+'</div>'+
             '</div>');
           }
         }
