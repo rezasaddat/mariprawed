@@ -11900,6 +11900,10 @@ iframe.uk-cover {
   height: 500px;
 }
 
+@media(min-height: 1280px ){
+  .forheight {
+    height: 1280px
+  }
 @media(min-width: 1500px){
   .forwidth {
     width: 103%;
@@ -11947,8 +11951,32 @@ iframe.uk-cover {
     width: 150%;
   }
 }
-@media(min-height: 1280px ){
-  .forheight {
-    height: 1280px
+
+@media(min-width: 2100px){
+  .forwidth {
+    width: 155%;
   }
+}
+
+@media(min-width: 2200px){
+  .forwidth {
+    width: 160%;
+  }
+
+  @media(min-width: 2300px){
+  .forwidth {
+    width: 170%;
+  }
+
+  @media(min-width: 2400px){
+  .forwidth {
+    width: 180%;
+  }
+
+  @media(min-width: 2500px){
+  .forwidth {
+    width: 210%;
+  }
+}
+
 }

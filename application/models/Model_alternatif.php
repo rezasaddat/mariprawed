@@ -32,7 +32,7 @@
         }
 
         $result = $this->db->select('*')
-                        ->where('rating >=',$ahp->nilai_alternatif * 100)
+                        // ->where('rating >=',$ahp->nilai_alternatif * 100)
                         ->get('tempat_prawed')->result();
 
         return $result;

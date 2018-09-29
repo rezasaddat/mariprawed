@@ -170,9 +170,9 @@ $(document).ready(function(){
           source: data_autocomplete,
           select: function( event, ui ) {
             console.log(ui.item.id); 
-              // setCookie("id_tempat",ui.item.id,365);
-              // $(this).scrollTop(0);
-              // $('#content').load("application/views/Front/ahp_result.php").fadeIn('slow');
+              setCookie("id_tempat",ui.item.id,365);
+              $(this).scrollTop(0);
+              $('#content').load("application/views/Front/detail_tempat.php").fadeIn('slow');
           }
   });
 
